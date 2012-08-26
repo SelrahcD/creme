@@ -51,7 +51,7 @@ $paths['storage'] = 'storage';
 // --------------------------------------------------------------
 // The path to the public directory.
 // --------------------------------------------------------------
-$paths['public'] = 'public';
+$paths['public'] = 'htdocs';
 
 // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 // END OF USER CONFIGURATION. HERE BE DRAGONS!
