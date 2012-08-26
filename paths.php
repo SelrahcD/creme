@@ -24,6 +24,7 @@
 $environments = array(
 
 	'dev' => array('http://creme*', '*.dev'),
+	'prod' => array('http://lacremedelacreme.chorip.am*')
 
 );
 
