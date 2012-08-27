@@ -1,6 +1,6 @@
 <?php
 
-class Member_Video_Controller extends Base_Controller{
+class Video_Controller extends Base_Controller{
 
 	public $restful = true;
 
@@ -12,7 +12,7 @@ class Member_Video_Controller extends Base_Controller{
 
 	public function get_suggest(){
 		$form = new Formly();
-		$this->layout->content = View::make('member::video.suggest')->with('form', $form);
+		$this->layout->content = View::make('video.suggest')->with('form', $form);
 	}
 
 	public function post_suggest(){
