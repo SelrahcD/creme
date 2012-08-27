@@ -32,10 +32,13 @@
 |
 */
 
-// Route::get('/', function()
-// {
-// 	return View::make('home.index');
-// });
+Route::any('/', 'public@home');
+Route::any('about', 'public@about');
+
+
+Route::get('suggest', 'video@suggest');
+Route::post('suggest', 'video@suggest');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -118,14 +121,19 @@ Route::filter('auth', function()
 */
 $menu = Menu::handler('nav');
 
-$menu->add('/', 'Home Page')
-	 ->add('video', 'Videos list');
+$menu->add('/', 'Accueil')
+	 ->add('video', 'Les vidéos');
+if(Auth::check()){
+	$menu->add('suggest', 'Suggerer une vidéo');
+}
+
+$menu->add('about', 'A propos');
 
 if(Auth::check()){
-	$menu->add('account', 'Account');
-	$menu->add('logout', 'Logout');
+	$menu->add('account', 'Profil');
+	$menu->add('logout', 'Se déconnecter');
 }
 else {
-	$menu->add('login', 'Login')
-		 ->add('register', 'Register');
+	$menu->add('login', 'Se connecter')
+		 ->add('register', 'Créer un compte');
 }
