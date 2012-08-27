@@ -74,7 +74,7 @@ class Formly
 	/**
 	 * Display inline validation error text
 	 */
-	public $display_inline_errors = false;
+	public $display_inline_errors = true;
 
 	/**
 	 * Class constructor
@@ -281,7 +281,7 @@ class Formly
 
 		if ($this->display_inline_errors && ! empty($error))
 		{
-			$out .= '<span class="help-inline">'.$error.'</span>';
+			$out .= '<p class="help-inline">'.$error.'</p>';
 		}
 
 		$out .= '</div>';
