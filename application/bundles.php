@@ -41,6 +41,7 @@ return array(
 			'location' => 'thirdparty/menu',
 			),
 		'auth' => array('auto' => true),
+		'public' => array('auto' => true),
 		'authority' => array(
 			'auto'     => true,
 			'location' => 'thirdparty/authority'),
