@@ -42,7 +42,13 @@ return array(
 			'location' => 'thirdparty/authority'),
 		'flare-form' => array(
 			'auto'     => true,
-			'location' => 'thirdparty/Flare-form'),
+			'location' => 'thirdparty/Flare-form',
+			),
+		'aware' => array(
+			'auto'     => true,
+			'location' => 'thirdparty/aware',
+			),
+
 		
 
 );
