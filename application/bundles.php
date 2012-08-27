@@ -42,6 +42,7 @@ return array(
 			),
 		'auth' => array('auto' => true),
 		'public' => array('auto' => true),
+		'member' => array('auto' => true),
 		'authority' => array(
 			'auto'     => true,
 			'location' => 'thirdparty/authority'),

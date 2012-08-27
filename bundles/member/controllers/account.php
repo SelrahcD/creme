@@ -1,6 +1,6 @@
 <?php
 
-class Auth_Account_Controller extends Base_Controller {
+class Member_Account_Controller extends Base_Controller {
 
 	public $restful = true;
 
@@ -12,13 +12,13 @@ class Auth_Account_Controller extends Base_Controller {
 
 	public function get_index(){
 		$user = Auth::user();
-		$this->layout->content = View::make('auth::account.view')->with('user', $user);
+		$this->layout->content = View::make('member::account.view')->with('user', $user);
 	}
 
 	public function get_edit(){
 		$user = Auth::user();
 		$form = Formly::make($user);
-		$this->layout->content = View::make('auth::account.edit')->with('form', $form);
+		$this->layout->content = View::make('member::account.edit')->with('form', $form);
 	}
 
 	public function post_edit(){

@@ -7,7 +7,7 @@ class Auth_Auth_Controller extends Base_Controller {
 	public function get_register(){
 		$form = new Formly();
 		$form->display_inline_errors = true;
-		$this->layout->content = View::make('auth::auth.register')->with('form', $form);
+		$this->layout->content = View::make('auth::register')->with('form', $form);
 	}
 
 	public function post_register(){
@@ -38,7 +38,7 @@ class Auth_Auth_Controller extends Base_Controller {
 	public function get_login(){
 		$form = new Formly();
 		$form->display_inline_errors = true;
-		$this->layout->content = View::make('auth::auth.login')->with('form', $form);
+		$this->layout->content = View::make('auth::login')->with('form', $form);
 	}
 
 	public function post_login(){
