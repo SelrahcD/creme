@@ -15,7 +15,7 @@ class Auth_Auth_Controller extends Base_Controller {
 		$rules = User::$rules;
 
 		/* Add confirmation to password's rules */
-		$rules['password'] .= 'confirmation';
+		$rules['password'] .= '|confirmed';
 
 		/* Validate */
 		$validator = Validator::make(Input::get(), $rules);
