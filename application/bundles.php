@@ -36,6 +36,10 @@
 return array(
 
 		'docs' => array('handles' => 'docs'),
+		'menu' => array(
+			'auto'     => true,
+			'location' => 'thirdparty/menu',
+			),
 		'auth' => array('auto' => true),
 		'authority' => array(
 			'auto'     => true,
