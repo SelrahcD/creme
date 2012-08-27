@@ -6,8 +6,8 @@ Route::any('about', 'public::page@about');
 /**********************************************
  * Add to menu
  *********************************************/
-/* Add auth category to menu */
-Menu::handler('nav')->add('', 'Auth', Menu::items('public'));
+/* Add public category to menu */
+Menu::handler('nav')->add('public', 'Public', Menu::items('public'));
 
 $menu = Menu::handler('nav')->find('public');
 $menu->add('/', 'Home Page')

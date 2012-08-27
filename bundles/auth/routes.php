@@ -24,7 +24,7 @@ Route::controller('auth::account');
  * Add to menu
  *********************************************/
 /* Add auth category to menu */
-Menu::handler('nav')->add('', 'Auth', Menu::items('auth'));
+Menu::handler('nav')->add('auth', 'Auth', Menu::items('auth'));
 
 $menu = Menu::handler('nav')->find('auth');
 
