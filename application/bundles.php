@@ -39,8 +39,18 @@ return array(
 		'menu' => array(
 			'auto'     => true,
 			'location' => 'thirdparty/menu',
+			'autoloads' => array(
+					'map' => array(
+						'Menu' => '(:bundle)/menu.php',
+					),
+				),
 			),
-		'auth' => array('auto' => true),
+		'auth' => array('auto' => true,
+			'autoloads' => array(
+					'map' => array(
+						'User' => '(:bundle)/models/user.php',
+					),
+				),),
 		'public' => array('auto' => true),
 		'member' => array('auto' => true),
 		'authority' => array(
