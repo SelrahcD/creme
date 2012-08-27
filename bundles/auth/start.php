@@ -1,4 +1,5 @@
 <?php 
 
 Autoloader::map(array(
-	'User' => Bundle::path('auth').'models/user.php'));
+	'User' => Bundle::path('auth').'models/user.php',
+	'Role' => Bundle::path('auth').'modes/role.php'));
