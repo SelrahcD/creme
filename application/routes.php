@@ -109,3 +109,23 @@ Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::to('login');
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Menu
+|--------------------------------------------------------------------------
+*/
+$menu = Menu::handler('nav');
+
+$menu->add('/', 'Home Page')
+	 ->add('video', 'Videos list');
+
+if(Auth::check()){
+	$menu->add('account', 'Account');
+	$menu->add('logout', 'Logout');
+}
+else {
+	$menu->add('login', 'Login')
+		 ->add('register', 'Register');
+}
