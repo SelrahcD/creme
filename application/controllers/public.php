@@ -1,8 +1,8 @@
 <?php
 
-class Public_Page_Controller extends Base_Controller {
+class Public_Controller extends Base_Controller {
 	
-	public function action_index(){
+	public function action_home(){
 		$this->layout->content = 'index';
 	}
 
