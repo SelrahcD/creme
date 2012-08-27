@@ -45,10 +45,13 @@ return array(
 			'location' => 'thirdparty/Flare-form',
 			),
 		'aware' => array(
-			'auto'     => true,
-			'location' => 'thirdparty/aware',
+			'auto'      => true,
+			'location'  => 'thirdparty/aware',
+			'autoloads' => array(
+			    'map' => array(
+			      'Aware' => '(:bundle)/model.php'
+			    ),
 			),
-
-		
+		)		
 
 );
