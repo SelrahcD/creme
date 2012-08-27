@@ -35,7 +35,14 @@
 
 return array(
 
-	'docs' => array('handles' => 'docs'),
-	'authority' => array('auto' => true),
+		'docs' => array('handles' => 'docs'),
+		'auth' => array('auto' => true),
+		'authority' => array(
+			'auto'     => true,
+			'location' => 'thirdparty/authority'),
+		'flare-form' => array(
+			'auto'     => true,
+			'location' => 'thirdparty/Flare-form'),
+		
 
 );
