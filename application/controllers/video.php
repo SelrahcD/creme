@@ -16,6 +16,34 @@ class Video_Controller extends Base_Controller{
 	}
 
 	public function post_suggest(){
-		$this->layout->content = 'suggest logic';
+
+		/* Trying to retrieve artist */
+		$artist = Artist::where('name', '=', Input::get('artist'))->first();
+
+		/* If artist isn't found create a new one */
+		if(!$artist){
+			$artist = new Artist();
+			$artist->name = Input::get('artist');
+			if(!$artist->save()){
+				$errors = $artist->errors;
+				$errors->messages['artist'] = $errors->messages['name'];
+				return Redirect::back()->with_input()->with_errors( $errors );
+			}
+		}
+
+		/* Create a new video */
+		$video = new Video();
+		$video->title = Input::get('title');
+		$video->url = Input::get('url');
+		$video->artist_id = $artist->id;
+		$video->user_id = Auth::user()->id;
+		$video->activated = 0;
+
+
+		if($video->save())	
+			return Redirect::home();
+		else {
+			return Redirect::back()->with_input()->with_errors( $video->errors );
+		}
 	}
 }
