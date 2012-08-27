@@ -26,4 +26,50 @@ class Video extends Aware {
     public function sender(){
         return $this->belongs_to('User');
     }
+
+    /**
+    * Action to perform before saving object on DB
+    * *Convert video url for integration
+    * @return boolean Validation of rules result
+    */
+    public function onSave(){
+        // if there's a new url convert it
+        if($this->changed('url')){
+            try {
+              $this->url =  $this->convertURL($this->url);
+            }
+            catch(InvalidArgumentException $e){
+                return false;
+            }
+        }
+        return $this->valid($this->rules);
+    }
+
+    private function convertURL($url){
+        if(strpos($url, 'youtube')){
+            if($res = strstr($url, 'v=')){
+            $res = substr($res, 2);
+            if(strstr($res, '&'))
+                $res = strstr($res, '&', true);
+            return 'http://www.youtube.com/embed/' . $res;
+            }
+            throw new InvalidArgumentException('Invalid Youtube URL');
+        }
+        else if(strpos($url, 'dailymotion')){
+            $res = substr(strrchr($url, "/"),1);
+            if($res = strstr($res, '_', true)){
+                return 'http://www.dailymotion.com/embed/video/'.$res;
+            }
+            throw new InvalidArgumentException('Invalid Dailymotion URL');
+        }
+
+        throw new InvalidArgumentException('Invalid video provider. We only handle youtube and dailymotion');
+
+    }
+
+    public function slug(){
+        $slug = preg_replace('/\W+/', '-', $this->artist->name.'-'.$this->title);
+        $slug = strtolower(trim($slug, '-'));
+        return $this->id . '-' . $slug;
+    }
 }
