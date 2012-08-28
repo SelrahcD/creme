@@ -38,6 +38,7 @@ return array(
 		'docs' => array('handles' => 'docs'),
 		'auth' => array('auto' => true),
 		'member' => array('auto' => true),
+		'admin' => array('handles' => 'admin'),
 		'authority' => array(
 			'auto'     => true,
 			'location' => 'thirdparty/authority',
