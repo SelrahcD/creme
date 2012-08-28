@@ -1,6 +1,6 @@
 <?php
 
-class Role extends Model {
+class Role extends Eloquent {
 
     public function users()
     {
