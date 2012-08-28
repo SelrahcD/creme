@@ -114,3 +114,24 @@ Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::to('login');
 });
+
+Route::filter('authority', function()
+{
+	$rules = func_get_args();
+
+	foreach($rules as $rule)
+	{
+		list($resource, $actions) = explode(':', $rule);
+		$actions = explode('.', $actions);
+
+		foreach($actions as $action)
+		{
+			if(Authority::can($action, $resource))
+			{
+				return;
+			}
+		}
+	}
+
+	return Redirect::error('404');
+});
