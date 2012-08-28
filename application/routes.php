@@ -36,10 +36,10 @@ Route::any('/', 'public@home');
 Route::any('about', 'public@about');
 
 
-Route::get('suggest', 'video@suggest');
-Route::post('suggest', 'video@suggest');
+// Route::get('suggest', 'videos@suggest');
+// Route::post('suggest', 'videos@suggest');
 
-Route::get('videos/waiting', 'video@waiting');
+Route::controller('videos');
 
 
 /*
@@ -112,7 +112,7 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('login');
+	if (Auth::guest()) return Redirect::error('404');
 });
 
 Route::filter('authority', function()
