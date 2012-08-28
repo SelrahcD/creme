@@ -36,26 +36,12 @@
 return array(
 
 		'docs' => array('handles' => 'docs'),
-		'menu' => array(
-			'auto'     => true,
-			'location' => 'thirdparty/menu',
-			'autoloads' => array(
-					'map' => array(
-						'Menu' => '(:bundle)/menu.php',
-					),
-				),
-			),
-		'auth' => array('auto' => true,
-			'autoloads' => array(
-					'map' => array(
-						'User' => '(:bundle)/models/user.php',
-					),
-				),),
-		'public' => array('auto' => true),
+		'auth' => array('auto' => true),
 		'member' => array('auto' => true),
 		'authority' => array(
 			'auto'     => true,
-			'location' => 'thirdparty/authority'),
+			'location' => 'thirdparty/authority',
+			),
 		'flare-form' => array(
 			'auto'     => true,
 			'location' => 'thirdparty/Flare-form',
@@ -68,6 +54,6 @@ return array(
 			      'Aware' => '(:bundle)/model.php'
 			    ),
 			),
-		)		
+		),		
 
 );

@@ -39,6 +39,8 @@ Route::any('about', 'public@about');
 Route::get('suggest', 'video@suggest');
 Route::post('suggest', 'video@suggest');
 
+Route::get('videos/waiting', 'video@waiting');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -112,28 +114,3 @@ Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::to('login');
 });
-
-
-/*
-|--------------------------------------------------------------------------
-| Menu
-|--------------------------------------------------------------------------
-*/
-$menu = Menu::handler('nav');
-
-$menu->add('/', 'Accueil')
-	 ->add('video', 'Les vidéos');
-if(Auth::check()){
-	$menu->add('suggest', 'Suggerer une vidéo');
-}
-
-$menu->add('about', 'A propos');
-
-if(Auth::check()){
-	$menu->add('account', 'Profil');
-	$menu->add('logout', 'Se déconnecter');
-}
-else {
-	$menu->add('login', 'Se connecter')
-		 ->add('register', 'Créer un compte');
-}

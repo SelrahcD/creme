@@ -11,8 +11,23 @@
 	{{ HTML::style('css/styles.css') }}
 </head>
 <body>
-	{{ Menu::handler('nav') }}
-
+	<nav>
+		<ul>
+			<li>{{ HTML::link('/', 'Accueil') }}</li>
+			<li>{{ HTML::link('about', 'A propos') }}</li>
+			@if(Authority::can('edit', 'User'))
+			<li>{{ HTML::link('videos/waiting', 'Vidéo en attente de validation') }}</li>
+			@endif
+			@if(Auth::check())
+			<li>{{ HTML::link('suggest', 'Proposer une vidéo') }}</li>
+			<li>{{ HTML::link('account', 'Profil') }}</li>
+			<li>{{ HTML::link('logout', 'Se déconnecter') }}</li>
+			@else
+			<li>{{ HTML::link('login', 'Se connecter') }}</li>
+			<li>{{ HTML::link('register', 'Créer un compte') }}</li>
+			@endif
+		</ul>
+	</nav>
 
 	{{ $content }}
 </body>
