@@ -27,26 +27,35 @@ class Video extends Aware {
         return $this->belongs_to('User');
     }
 
+    public function set_url($url){
+         $this->set_attribute('url',  $this->convertURL($url));
+    }
+
     /**
     * Action to perform before saving object on DB
     * *Convert video url for integration
     * @return boolean Validation of rules result
     */
-    public function onSave(){
-        // if there's a new url convert it
-        if($this->changed('url')){
-            try {
-              $this->url =  $this->convertURL($this->url);
-            }
-            catch(InvalidArgumentException $e){
-                return false;
-            }
-        }
-        return $this->valid($this->rules);
-    }
+    // public function onSave(){
+    //     // if there's a new url convert it
+    //     if($this->changed('url')){
+    //         try {
+    //           $this->url =  $this->convertURL($this->url);
+    //         }
+    //         catch(InvalidArgumentException $e){
+    //             return false;
+    //         }
+    //     }
+    //     return $this->valid($this->rules);
+    // }
 
     private function convertURL($url){
         if(strpos($url, 'youtube')){
+
+            if(strpos($url, 'embed')){
+                return $url;
+            }
+
             if($res = strstr($url, 'v=')){
             $res = substr($res, 2);
             if(strstr($res, '&'))
@@ -56,6 +65,11 @@ class Video extends Aware {
             throw new InvalidArgumentException('Invalid Youtube URL');
         }
         else if(strpos($url, 'dailymotion')){
+
+            if(strpos($url, 'embed')){
+                return $url;
+            }
+
             $res = substr(strrchr($url, "/"),1);
             if($res = strstr($res, '_', true)){
                 return 'http://www.dailymotion.com/embed/video/'.$res;
