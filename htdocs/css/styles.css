@@ -317,7 +317,7 @@ input, button, select {
 }
 
 
-textarea, input[type="email"], input[type="text"] {
+textarea, input {
     display:block;
     font-family: 'Quicksand', arial, helvetica, sans-serif;
     padding: 5px;
