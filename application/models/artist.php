@@ -6,7 +6,7 @@ class Artist extends Aware {
     * Aware validation rules
     */
     public static $rules = array(
-        'name' => 'required|min:2',
+        'name' => 'required|min:1',
     );
 
     public static $timestamps = false;
