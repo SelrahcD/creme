@@ -8,7 +8,7 @@
 		@endforeach
 		</ul>
 	@else
-	Aucune vidéo n'a été ajoutée.
+	<p>Aucune vidéo n'a été ajoutée.</p>
 	@endif
 @else
 	@if(sizeof($artists) > 0)
@@ -23,6 +23,6 @@
 		@endif
 		@endforeach
 	@else
-	Aucun artiste n'a été ajouté.
+	<p>Aucun artiste n'a été ajouté.</p>
 	@endif
 @endif
