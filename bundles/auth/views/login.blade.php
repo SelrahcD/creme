@@ -1,3 +1,4 @@
+<h1>Se connecter</h1>
 @if(Session::has('login_errors'))
 <p>Email/Mot de passe invalide.</p>
 @endif

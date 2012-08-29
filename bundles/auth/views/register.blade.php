@@ -1,3 +1,4 @@
+<h1>Créer un compte</h1>
 {{ $form->open() }}
     <fieldset>
         <!-- username field -->

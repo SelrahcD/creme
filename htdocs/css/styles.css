@@ -20,7 +20,7 @@ Licence CC-BY http://creativecommons.org/licenses/by/3.0/fr/
 10- print
 11- mobile
 */
-
+@import url(http://fonts.googleapis.com/css?family=Quicksand);
 /* ----------------------------- */
 /* ==colors */
 /* ----------------------------- */
@@ -33,9 +33,9 @@ Licence CC-BY http://creativecommons.org/licenses/by/3.0/fr/
 /* base font-size corresponds to 10px */
 html {font-size: 62.5%;}
 body {
-    background-color: #fff;
-    color: #000;
-    font-family: "Century Gothic", arial, helvetica, sans-serif;
+    background-color: #F9F2E7;
+    color: #444;
+    font-family: 'Quicksand', arial, helvetica, sans-serif;
     line-height: 1.5; /* adapt to your design */
 }
 
@@ -240,8 +240,60 @@ a img {border: 0;}
 .phone-hidden {} /* hidden on smartphones */
 
 /* ----------------------------- */
+/* ==links */
+/* ----------------------------- */
+a {
+    color:#00A8C6;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+a:hover, a:active, a:focus {
+    color:#8FBE00;
+}
+
+/* ----------------------------- */
 /* ==header */
 /* ----------------------------- */
+
+.main-header {
+    background-color: #00A8C6;
+    border-bottom:1px solid #444;
+    color:#fff;
+    padding:10px;
+}
+
+.catch-phrase {
+    display: block;
+    text-align:right;
+    font-size:3em;
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding:0;
+}
+
+.main-nav li {
+    float:left;
+    margin-right: 10px;
+}
+
+.main-nav a {
+    text-decoration:none;
+    display:block;
+    font-weight: bold;
+    color:#fff;
+    letter-spacing: -2px;
+    border-bottom: 2px solid #fff;
+}
+
+.main-nav a:active, .main-nav a:hover {
+    border-bottom: 2px solid #8FBE00;
+}
 
 /* ----------------------------- */
 /* ==sidebar */
@@ -250,7 +302,11 @@ a img {border: 0;}
 /* ----------------------------- */
 /* ==footer */
 /* ----------------------------- */
-
+.main-footer {
+    text-align:center;
+    font-size:0.8em;
+    margin-bottom:10px;
+}
 /* ----------------------------- */
 /* ==forms */
 /* ----------------------------- */
@@ -260,10 +316,55 @@ input, button, select {
   vertical-align: middle; /* @bugfix alignment */
 }
 
+
+textarea, input[type="email"], input[type="text"] {
+    display:block;
+    font-family: 'Quicksand', arial, helvetica, sans-serif;
+    padding: 5px;
+    width:300px;
+    border: 1px solid #bbb;
+    background: #f5f5f5;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+textarea:focus, input:focus {
+    border: 1px solid #00A8C6;
+    background:#fafafa;
+    }
+
+button[type="submit"], input[type="submit"]{
+    margin-top:5px;
+    border:1px solid #00A8C6;
+    padding:5px 10px;
+    font-family: 'Quicksand', arial, helvetica, sans-serif;
+    cursor:  pointer;
+}
+
+button[type="submit"]:focus, button[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:hover{
+    border:1px solid #8FBE00;
+}
+
+input[type="submit"]:active, button[type="submit"]:active {
+    border: 1px solid #ccc;
+    background: #eee;
+    }   
+
 /* ----------------------------- */
 /* ==main */
 /* ----------------------------- */
+.main-content {
+    padding:10px;
+}
 
+iframe {
+    height:315px;
+    width:560px;
+}
 /* ----------------------------- */
 /* ==iefix */
 /* ----------------------------- */

@@ -1,3 +1,4 @@
+<h1>Proposer une vidéo</h1>
 {{ $form->open() }}
     <fieldset>
         <!-- title field -->

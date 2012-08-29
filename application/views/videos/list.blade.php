@@ -1,3 +1,4 @@
+<h1>Liste des vidéos</h1>
 <p>Afficher par : {{ HTML::link('videos/list', 'Artistes') }} | {{ HTML::link('videos/list/date', 'Date d\'ajout') }}</p>
 @if($sortMode == 'date')
 	@if(sizeof($videos) > 0 )
@@ -12,12 +13,14 @@
 @else
 	@if(sizeof($artists) > 0)
 		@foreach($artists as $artist)
-		<h3>{{ $artist->name }}</h3>
+		@if(sizeof($artist->videos) > 0 )
+		<h2>{{ $artist->name }}</h2>
 			<ul>
 			@foreach($artist->videos as $video)
 				<li>{{ HTML::link('videos/watch/'.$video->slug(), $video->title) }}</li>
 			@endforeach
 			</ul>
+		@endif
 		@endforeach
 	@else
 	Aucun artiste n'a été ajouté.

@@ -1,3 +1,4 @@
+<h1>Liste des vidéos en attente de validation</h1>
 @if(!sizeof($videosList))
 <p>Aucune vidéo à activer.</p>
 @else

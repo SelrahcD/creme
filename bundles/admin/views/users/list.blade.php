@@ -1,5 +1,6 @@
+<h1>Liste des utilisateurs</h1>
 <table>
-	<tr><td>Username</td><td>Email</td>
+	<tr><td>Nom d'utilisateur</td><td>Email</td>
 		@foreach(Role::$roles as $role)
 		<td>{{ $role }}</td>
 		@endforeach

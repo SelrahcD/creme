@@ -65,7 +65,7 @@ class Admin_Users_Controller extends Admin_Base_Controller {
 			/* User loose a role, remove it*/
 			elseif(!Input::has('roles_'.$roleName) && $user->has_role($roleName)){
 				/* Admin is a special case, Current user can't remove his admin role */
-				if($roleName != 'admin' || Authority::can('unset_admin_role', 'User', $user)){
+				if($roleName != 'admin' || Authority::can('unset_admin_role', 'user', $user)){
 					$role = Role::where_name($roleName)->first();
 					$user->roles()->detach($role->id);
 				}
