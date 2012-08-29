@@ -23,6 +23,9 @@ class Videos_Controller extends Base_Controller{
 
 	public function post_suggest(){
 
+		$formIsValid = true;
+		$errors = null;
+
 		/* Trying to retrieve artist */
 		$artist = Artist::where('name', '=', Input::get('artist'))->first();
 
@@ -31,9 +34,10 @@ class Videos_Controller extends Base_Controller{
 			$artist = new Artist();
 			$artist->name = Input::get('artist');
 			if(!$artist->save()){
+				$formIsValid = false;
 				$errors = $artist->errors;
 				$errors->messages['artist'] = $errors->messages['name'];
-				return Redirect::back()->with_input()->with_errors( $errors );
+				unset($errors->messages['name']);
 			}
 		}
 
@@ -45,10 +49,24 @@ class Videos_Controller extends Base_Controller{
 		$video->user_id = Auth::user()->id;
 		$video->activated = 0;
 
-		if($video->save())	
-			return Redirect::home();
+		/* Valid video*/
+		if(!$video->valid()){
+			$formIsValid = false;
+			if($errors)
+				$errors->messages = array_merge($errors->messages, $video->errors->messages);
+			else 
+				$errors = $video->errors;
+		}
+
+		if($formIsValid){
+			if($video->save())
+				return Redirect::home();
+			else {
+				return Redirect::back()->with_input()->with_errors( $video->errors );
+			}
+		}
 		else {
-			return Redirect::back()->with_input()->with_errors( $video->errors );
+			return Redirect::back()->with_input()->with_errors( $errors );
 		}
 	}
 
@@ -100,12 +118,15 @@ class Videos_Controller extends Base_Controller{
 		/* sort videos by add date */
 		if($sortMode == 'date'){
 			$this->layout->content->sortMode = 'date';
-			$this->layout->content->videos   = Video::with('artist')->order_by('created_at', 'desc')->get();
+			$this->layout->content->videos   = Video::with('artist')->where('activated', '=', '1')->order_by('created_at', 'desc')->get();
 		}
 		/* sort video by artist name */
 		else {
 			$this->layout->content->sortMode = 'artist';
-			$this->layout->content->artists  = Artist::with('videos')->order_by('name','asc')->get();
+			$this->layout->content->artists  = Artist::with(
+				array('videos' => function($query){
+   					$query->where('activated', '=', '1');
+   				}))->order_by('name','asc')->get();
 		}
 		
 
